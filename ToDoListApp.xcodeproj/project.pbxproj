@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FE7A49E62CF5969B00FF04FD /* ToDoListApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE7A49E42CF5969B00FF04FD /* ToDoListApp.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		FE7A49D32CF5966B00FF04FD /* ToDoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE7A49E52CF5969B00FF04FD /* ToDoListApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoListApp.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +37,7 @@
 		FE7A49CA2CF5966B00FF04FD = {
 			isa = PBXGroup;
 			children = (
+				FE7A49E42CF5969B00FF04FD /* ToDoListApp.xcdatamodeld */,
 				FE7A49D52CF5966B00FF04FD /* ToDoListApp */,
 				FE7A49D42CF5966B00FF04FD /* Products */,
 			);
@@ -119,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE7A49E62CF5969B00FF04FD /* ToDoListApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +331,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FE7A49E42CF5969B00FF04FD /* ToDoListApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FE7A49E52CF5969B00FF04FD /* ToDoListApp.xcdatamodel */,
+			);
+			currentVersion = FE7A49E52CF5969B00FF04FD /* ToDoListApp.xcdatamodel */;
+			path = ToDoListApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FE7A49CB2CF5966B00FF04FD /* Project object */;
 }

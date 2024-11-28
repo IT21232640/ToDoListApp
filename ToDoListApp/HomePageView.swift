@@ -1,8 +1,22 @@
-//
-//  HomePageView.swift
-//  ToDoListApp
-//
-//  Created by Anuththara Divarathna on 2024-11-26.
-//
+import SwiftUI
 
-import Foundation
+struct HomePageView: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                Text("Hi, Welcome to the To-Do List App!")
+                    .font(.largeTitle)
+                    .padding()
+                
+
+                NavigationLink(destination: LoginPageView()) {
+                    Text("Start")
+                        .foregroundColor(.blue)
+                        .font(.title2)
+                }
+                .padding()
+            }
+            .navigationTitle("Home")
+        }
+    }
+}
