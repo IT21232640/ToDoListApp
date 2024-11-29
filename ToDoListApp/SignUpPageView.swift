@@ -11,46 +11,91 @@ struct SignUpPageView: View {
     @State private var errorMessage = ""
     
     var body: some View {
-        VStack {
-            Text("Sign Up")
-                .font(.largeTitle)
-                .padding()
+        ZStack {
+            // Background Gradient
+            LinearGradient(
+                gradient: Gradient(colors: [Color.blue.opacity(0.6), Color.purple]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
             
-            TextField("Username", text: $username)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            
-            SecureField("Password", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            
-            SecureField("Confirm Password", text: $confirmPassword)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            
-            if !errorMessage.isEmpty {
-                Text(errorMessage)
-                    .foregroundColor(.red)
+            VStack(spacing: 30) {
+                // Title
+                Text("Create Your Account")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding(.top, 50)
+                
+                Text("Sign up to start using the app")
+                    .foregroundColor(.white.opacity(0.8))
+                    .font(.headline)
+                
+                // Username Field
+                TextField("Username", text: $username)
                     .padding()
-            }
-            
-            Button("Sign Up") {
-                if isValidSignUp() {
-                    saveUserAccount() // Save the user data to Core Data
-                } else {
-                    errorMessage = "Passwords don't match or missing fields."
+                    .background(Color.white.opacity(0.8))
+                    .cornerRadius(10)
+                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
+                    .padding(.horizontal)
+                
+                // Password Field
+                SecureField("Password", text: $password)
+                    .padding()
+                    .background(Color.white.opacity(0.8))
+                    .cornerRadius(10)
+                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
+                    .padding(.horizontal)
+                
+                // Confirm Password Field
+                SecureField("Confirm Password", text: $confirmPassword)
+                    .padding()
+                    .background(Color.white.opacity(0.8))
+                    .cornerRadius(10)
+                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
+                    .padding(.horizontal)
+                
+                // Error Message
+                if !errorMessage.isEmpty {
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                        .font(.footnote)
+                        .padding(.horizontal)
                 }
+                
+                // Sign Up Button
+                Button(action: {
+                    if isValidSignUp() {
+                        saveUserAccount()
+                    } else {
+                        errorMessage = "Passwords don't match or missing fields."
+                    }
+                }) {
+                    Text("Sign Up")
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.purple)
+                        .cornerRadius(10)
+                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
+                }
+                .padding(.horizontal)
+                
+                // Login Link
+                NavigationLink(destination: LoginPageView()) {
+                    Text("Already have an account? Log In")
+                        .foregroundColor(.white)
+                        .underline()
+                }
+                
+                Spacer()
             }
             .padding()
-            .foregroundColor(.blue)
-            
-            // Navigate to Login page after sign-up
-            if isSignedUp {
-                NavigationLink("Go to Login", destination: LoginPageView(), isActive: $isSignedUp)
-            }
         }
-        .navigationTitle("Sign Up")
-        .padding()
+        .navigationBarBackButtonHidden(true) // Hides the back button
+        .navigationBarTitle("", displayMode: .inline) // Removes navigation title
     }
     
     // Validate signup logic
