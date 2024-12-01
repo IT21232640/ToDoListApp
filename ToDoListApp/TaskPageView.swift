@@ -121,7 +121,7 @@ struct TaskPageView: View {
                 .padding(.top, 10)
             }
         }
-        .navigationBarBackButtonHidden(false) // Ensure default back button
+        .navigationBarBackButtonHidden(true) // Ensure default back button
         .navigationTitle("Tasks") // Use navigation title
     }
 
